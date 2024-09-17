@@ -9,7 +9,7 @@ pipeline{
         }
         stage('build'){
             steps{
-                sh 'docker build -t weapp .'
+                sh 'docker build -t weapp /var/lib/jenkins/workspace/docker/.'
             }
         }
         stage('run'){
