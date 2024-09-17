@@ -7,14 +7,14 @@ pipeline{
                 git 'https://github.com/chetanbkcbk/publicrepo.git'
             }
         }
-        stage('clean'){
+        stage('build'){
             steps{
-                sh 'rm -rf /var/www/html/*'
+                sh 'docker build -t weapp .'
             }
         }
-        stage('deploy'){
+        stage('run'){
             steps{
-                sh 'cp -r . /var/www/html/'
+                sh 'docker run -d -it --name cont_weapp -p 80:80 weapp'
             }
         }
     }
